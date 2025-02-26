@@ -1,6 +1,7 @@
 import { Pokemon } from "@/data/models/pokemon";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Image from 'next/image';
 
 type PokeCardProps = {
     name: string;
@@ -21,7 +22,8 @@ export default function PokeCard({ name, url }: PokeCardProps) {
       });
 
     return (
-        <div>
+        <div className="flex">
+            <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={96} height={96} />
             {data ? <p>{data.name}</p> : null}
         </div>
 
