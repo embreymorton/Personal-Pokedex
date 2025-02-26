@@ -1,14 +1,19 @@
 import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
 import { GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
 
 type PokemonDetailsPageProps = {pokemon: Pokemon, species: PokemonSpecies};
 export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPageProps) {
 
+    const router = useRouter();
+
     return (
         <>
             <p>{pokemon.name} details!</p>
+            <button type="button" onClick={() => router.back()}> Back </button>
         </>
+
     )
 }
 
