@@ -11,6 +11,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
 
     return (
         <>
+            <button type="button" onClick={() => router.back()}> Back </button>
             <p>{pokemon.name} details!</p>
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>
@@ -18,7 +19,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
                 </Link>
                 
             ))}
-            <button type="button" onClick={() => router.back()}> Back </button>
+            
         </>
 
     )

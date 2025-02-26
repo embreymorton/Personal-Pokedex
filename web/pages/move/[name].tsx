@@ -10,8 +10,8 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
 
     return (
         <>
-        <p>{move.name} details!</p>
         <button type="button" onClick={() => router.back()}> Back </button>
+        <p>{move.name} details!</p>
         </>
     )
 }
