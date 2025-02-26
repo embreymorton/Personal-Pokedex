@@ -1,3 +1,4 @@
+import PokeCard from "@/components/PokeCard";
 import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
 import { GetServerSidePropsContext } from "next";
@@ -13,11 +14,27 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
         <>
             <button type="button" onClick={() => router.back()}> Back </button>
             <h1 className="text-4xl">{pokemon.name} details!</h1>
+
+            <PokeCard name={pokemon.name} ></PokeCard>
+
+            {pokemon.types.map((type) => (
+                <p key={type.slot}> Type {type.slot}: {type.type.name}</p>
+            ))}
+
+            <p> Description: {species.flavor_text_entries[0].flavor_text}</p>
+
+            {species.evolves_from_species ? 
+            <div>
+                <p className="text-2xl">Evolves From</p>
+                <PokeCard name={species.evolves_from_species.name} ></PokeCard> 
+            </div>
+            : null}
+
+            <h2 className="text-2xl font-bold"> Moves </h2>
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>
                     <p>{move.move.name}</p>
                 </Link>
-                
             ))}
             
         </>

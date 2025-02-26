@@ -6,10 +6,9 @@ import { useState } from "react";
 
 type PokeCardProps = {
     name: string;
-    url: string;
   };
 
-export default function PokeCard({ name, url }: PokeCardProps) {
+export default function PokeCard({ name }: PokeCardProps) {
 
     const [direction, setDirection] = useState<boolean>(true);
 

@@ -12,6 +12,10 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
         <>
         <button type="button" onClick={() => router.back()}> Back </button>
         <h1 className="text-4xl">{move.name} details!</h1>
+        <p> Description: {move.flavor_text_entries[0].flavor_text}</p>
+        <p> Type: {move.type.name}</p>
+        <p> Power: {move.power}</p>
+        <p> Accuracy: {move.accuracy}</p>
         </>
     )
 }

@@ -32,7 +32,7 @@ return (
     <div className="flex flex-wrap gap-4">
       {data ? (
         data.results.map((pokemon) => (
-          <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+          <PokeCard key={pokemon.name} name={pokemon.name}/>
         ))
       ) : null}
     </div>
