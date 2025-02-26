@@ -24,7 +24,7 @@ export default function Home() {
 
 return (
   <div>
-    <button onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous Page</button>
+    <button className="mr-2" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous Page</button>
     <button onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next Page</button>
     
     {isLoading ? <p>Loading...</p> : null}
