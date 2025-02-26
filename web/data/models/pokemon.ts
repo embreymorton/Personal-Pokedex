@@ -16,6 +16,7 @@ export type Pokemon = {
   // Contains a URL for the "sprite", which is an image of the Pokemon.
   sprites: {
     front_default: string;
+    back_default: string;
   };
   // List of moves that the Pokemon can learn.
   // NOTE: You can use this value when trying to access data from the
