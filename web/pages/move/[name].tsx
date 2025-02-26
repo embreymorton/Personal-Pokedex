@@ -11,7 +11,7 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
     return (
         <>
         <button type="button" onClick={() => router.back()}> Back </button>
-        <p>{move.name} details!</p>
+        <h1 className="text-4xl">{move.name} details!</h1>
         </>
     )
 }

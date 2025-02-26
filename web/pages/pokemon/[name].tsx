@@ -12,7 +12,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
     return (
         <>
             <button type="button" onClick={() => router.back()}> Back </button>
-            <p>{pokemon.name} details!</p>
+            <h1 className="text-4xl">{pokemon.name} details!</h1>
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>
                     <p>{move.move.name}</p>

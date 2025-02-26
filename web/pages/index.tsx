@@ -29,11 +29,14 @@ return (
     
     {isLoading ? <p>Loading...</p> : null}
     {error ? <p>Error: {error.message}</p> : null}
-    {data ? (
-      data.results.map((pokemon) => (
-        <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
-      ))
-    ) : null}
+    <div className="flex flex-wrap gap-4">
+      {data ? (
+        data.results.map((pokemon) => (
+          <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+        ))
+      ) : null}
+    </div>
+    
   </div>
 )
 }

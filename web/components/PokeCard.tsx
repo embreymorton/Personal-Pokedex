@@ -24,8 +24,8 @@ export default function PokeCard({ name, url }: PokeCardProps) {
     return (
         <div>
             <Link href={`/pokemon/${name}`}>
-            <div className="flex">
-                <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={96} height={96} />
+            <div>
+                <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={144} height={144} />
                 {data ? <p>{data.name}</p> : null}
             </div>
             </Link>
