@@ -16,7 +16,7 @@ export default function PokeCard({ name, url }: PokeCardProps) {
         return data;
     }
 
-    const { data, error, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ['Pokemon', name],
         queryFn: fetcher
       });

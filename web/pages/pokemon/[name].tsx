@@ -1,6 +1,7 @@
 import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
 import { GetServerSidePropsContext } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 type PokemonDetailsPageProps = {pokemon: Pokemon, species: PokemonSpecies};
@@ -11,6 +12,12 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
     return (
         <>
             <p>{pokemon.name} details!</p>
+            {pokemon.moves.map((move, index) => (
+                <Link href={`/move/${move.move.name}`} key={index}>
+                    <p>{move.move.name}</p>
+                </Link>
+                
+            ))}
             <button type="button" onClick={() => router.back()}> Back </button>
         </>
 
