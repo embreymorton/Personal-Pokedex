@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from "next/link";
 import { useState } from "react";
 import TypeCard from "./TypeCard";
+import { typeColors } from "./TypeCard";
+
 
 type PokeCardProps = {
     name: string;
@@ -39,7 +41,7 @@ export default function PokeCard({ name }: PokeCardProps) {
     return (
         <div>
             <Link href={`/pokemon/${name}`}>
-                <div className="flex flex-col p-4 rounded-xl bg-[#F0F0F0] w-72 items-center">
+                <div className="flex flex-col p-4 rounded-xl bg-[#F0F0F0] w-72 items-center border-8" style={{ borderColor: data ? typeColors[data.types[0].type.name].background : 'slategray' }}>
                     <div className="text-slate-700 text-4xl mr-auto">
                         {data ? <p>{formatPokedexIndex(data.id)}</p> : null}
                     </div>
@@ -48,7 +50,7 @@ export default function PokeCard({ name }: PokeCardProps) {
                         <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={180} height={180} />  
                     </button>
      
-                    <div className="text-slate-700 text-2xl">
+                    <div className="text-slate-700 text-2xl font-bold">
                         <p> {data ? <p>{formatName(data.name)}</p> : null} </p>
                     </div>
 

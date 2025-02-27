@@ -2,7 +2,7 @@ interface Dictionary<T> {
     [key: string]: T;
 }
 
-const typeColors: Dictionary<{ background: string, text: string }> = {
+export const typeColors: Dictionary<{ background: string, text: string }> = {
     "bug": { background: "#5A9542", text: "white" },
     "dark": { background: "#656565", text: "white" },
     "dragon": { background: "#FF5B50", text: "white" },

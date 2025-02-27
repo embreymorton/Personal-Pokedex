@@ -23,9 +23,10 @@ export default function Home() {
 
 return (
   <div className="h-screen p-6">
+    <h1 className="flex items-center justify-center text-8xl font-bold"> PokeDex </h1>
     <div className="flex flex-row items-center justify-center p-6">
-      <button className="mr-4 text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
-      <button className="text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
+      <button className="mr-4 text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20 font-bold" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
+      <button className="text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20 font-bold" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
     </div>
     
     {isLoading ? <p>Loading...</p> : null}
