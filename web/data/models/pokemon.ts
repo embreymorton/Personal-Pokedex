@@ -36,4 +36,6 @@ export type Pokemon = {
     base_stat: number;
     stat: { name: string };
   }[];
+
+  id: number;
 };

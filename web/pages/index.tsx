@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function Home() {
 
   const [page, setPage] = useState<number>(0);
-
   const maxPage = 27;
 
   const fetcher = async (): Promise<Pokedex> => {
@@ -23,13 +22,13 @@ export default function Home() {
   }); 
 
 return (
-  <div>
+  <div className="h-screen p-6">
     <button className="mr-2" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous Page</button>
     <button onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next Page</button>
     
     {isLoading ? <p>Loading...</p> : null}
     {error ? <p>Error: {error.message}</p> : null}
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-4 w-full">
       {data ? (
         data.results.map((pokemon) => (
           <PokeCard key={pokemon.name} name={pokemon.name}/>
