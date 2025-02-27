@@ -35,6 +35,7 @@ export default function PokeCard({ name }: PokeCardProps) {
             .join(' ');
     }
 
+
     return (
         <div>
             <Link href={`/pokemon/${name}`}>
