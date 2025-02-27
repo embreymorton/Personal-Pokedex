@@ -4,6 +4,8 @@ import PokeCard from "@/components/PokeCard";
 import { Pokedex } from "@/data/models/pokedex";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Image from 'next/image';
+import logo from "../assets/logo.png";
 
 export default function Home() {
 
@@ -21,25 +23,28 @@ export default function Home() {
     queryFn: fetcher
   }); 
 
-return (
-  <div className="h-screen p-6">
-    <h1 className="flex items-center justify-center text-8xl font-bold"> PokeDex </h1>
-    <div className="flex flex-row items-center justify-center p-6">
-      <button className="mr-4 text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20 font-bold" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
-      <button className="text-5xl bg-[#F0F0F0] text-slate-700 w-72 h-20 font-bold" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
-    </div>
-    
-    {isLoading ? <p>Loading...</p> : null}
-    {error ? <p>Error: {error.message}</p> : null}
+  return (
+    <div className="p-6 bg-slate-300">
+      <div className="flex flex-row items-center justify-center p-6">
+        <Image src={logo} alt="PokéDex Logo" width={128} height={128} className="w-32 h-32 mr-4"/>
+        <h1 className="flex items-center justify-center text-8xl font-bold text-black"> PokéDex </h1>
+        <Image src={logo} alt="PokéDex Logo" width={128} height={128} className="w-32 h-32 ml-4"/>
+      </div>
+      <div className="flex flex-row items-center justify-center p-6">
+        <button className="mr-4 text-4xl bg-[#F0F0F0] text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
+        <button className="text-4xl bg-[#F0F0F0] text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
+      </div>
+      
+      {isLoading ? <p>Loading...</p> : null}
+      {error ? <p>Error: {error.message}</p> : null}
 
-    <div className="flex flex-wrap gap-4 w-full items-center justify-center">
-      {data ? (
-        data.results.map((pokemon) => (
-          <PokeCard key={pokemon.name} name={pokemon.name}/>
-        ))
-      ) : null}
+      <div className="flex flex-wrap gap-4 w-full items-center justify-center">
+        {data ? (
+          data.results.map((pokemon) => (
+            <PokeCard key={pokemon.name} name={pokemon.name}/>
+          ))
+        ) : null}
+      </div>
     </div>
-    
-  </div>
-)
+  )
 }
