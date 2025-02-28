@@ -24,8 +24,6 @@ type PokeCardProps = {
 
 export default function PokeCard({ name }: PokeCardProps) {
 
-    const [direction, setDirection] = useState<boolean>(true);
-
     const fetcher = async (): Promise<Pokemon> => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         const data = await response.json() as unknown as Pokemon;
@@ -47,11 +45,9 @@ export default function PokeCard({ name }: PokeCardProps) {
                     <div className="text-slate-700 text-4xl mr-auto">
                         {data ? <p>{formatPokedexIndex(data.id)}</p> : null}
                     </div>
-                
-                    <button onClick={() => setDirection(!direction)}>
-                        <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={180} height={180} />  
-                    </button>
-     
+            
+                    <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={180} height={180} />  
+                    
                     <div className="text-slate-700 text-2xl font-bold line-clamp-1">
                         <p> {data ? <p>{formatName(data.name)}</p> : null} </p>
                     </div>
@@ -63,12 +59,6 @@ export default function PokeCard({ name }: PokeCardProps) {
                     </div>
                 </div>
             </Link>
-
-            {/* <button onClick={() => setDirection(!direction)}>
-                {direction ? 
-                <Image src={data?.sprites?.front_default || ''} alt={data?.name || 'Pokemon'} width={196} height={196} /> : 
-                <Image src={data?.sprites?.back_default  || ''} alt={data?.name || 'Pokemon'} width={196} height={196} />}   
-             </button> */}
             
         </div>
         
