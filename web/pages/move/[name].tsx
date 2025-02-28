@@ -1,4 +1,4 @@
-import PokeCard from "@/components/PokeCard";
+import PokeCard, { formatName } from "@/components/PokeCard";
 import TypeCard from "@/components/TypeCard";
 import { Move } from "@/data/models/move";
 import { GetServerSidePropsContext } from "next";
@@ -15,8 +15,8 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
             <button className="bg-white text-black text-2xl min-w-24 h-10 border-4 border-slate-700 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
 
             <div className="flex flex-row items-center justify-center gap-4">
-                <div className="p-6 bg-white text-black border-4 border-slate-700 rounded-xl w-80 text-center">
-                    <h1 className="text-6xl mb-4">{move.name}</h1>
+                <div className="p-6 bg-white text-black border-4 border-slate-700 rounded-xl min-w-80 max-w-[500px] text-center">
+                    <h1 className="text-6xl mb-4 font-bold">{formatName(move.name)}</h1>
                     <p className="text-2xl"> {move.flavor_text_entries[0].flavor_text}</p>
                 </div>
 

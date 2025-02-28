@@ -34,7 +34,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
     const [direction, setDirection] = useState<boolean>(true);
 
     return (
-        <div className="p-4 bg-slate-300">
+        <div className="p-6 bg-slate-300">
             <button className="bg-white text-black text-2xl w-24 h-10 border-4 border-slate-700 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
             
             <div className="flex flex-row items-center justify-center gap-8 ">
@@ -52,7 +52,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
                 </button> 
             </div>
 
-            <div className="flex flex-col gap-4 max-w-[25rem]">
+            <div className="flex flex-col gap-4 max-w-[30rem]">
                 <div className="flex bg-white text-slate-700 p-4 rounded-xl border-8 border-slate-700">
                 <p className="text-3xl text-center">{species.flavor_text_entries[0].flavor_text}</p>
                 </div>
@@ -89,7 +89,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>
                 <div className="flex flex-row bg-white items-center justify-center rounded-xl p-2 border-slate-700 border-4">
-                    <p className="text-slate-700 text-xl font-bold">{move.move.name}</p>
+                    <p className="text-slate-700 text-xl font-bold">{formatName(move.move.name)}</p>
                 </div>
                 </Link>
             ))}
