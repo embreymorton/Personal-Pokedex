@@ -67,7 +67,7 @@ export default function Home() {
 
 
       {/* Pokédex Grid */}
-      <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto">
+      <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto mb-20">
         {data &&
           data.results.map((pokemon) => (
             <div key={pokemon.name}>
