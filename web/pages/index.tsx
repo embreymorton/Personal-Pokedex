@@ -75,24 +75,6 @@ export default function Home() {
             </div>
           ))}
       </div>
-
-      {/* Bottom Navigation Buttons */}
-      <div className="flex flex-row items-center justify-center p-6">
-        <button
-          className="mr-4 text-4xl bg-white text-black dark:bg-gray-800 dark:text-white w-72 h-20 font-bold rounded-2xl border-[6px] border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-600"
-          onClick={() => setPage(page - 1)}
-          disabled={page <= 0}
-        >
-          Previous
-        </button>
-        <button
-          className="text-4xl bg-white text-black dark:bg-gray-800 dark:text-white w-72 h-20 font-bold rounded-2xl border-[6px] border-black dark:border-white hover:bg-gray-50 dark:hover:bg-gray-600"
-          onClick={() => setPage(page + 1)}
-          disabled={page >= maxPage - 1}
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 }
