@@ -30,7 +30,7 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
                 </div>
             </div>
 
-            <h2 className="flex text-5xl font-bold items-center justify-center p-4 text-slate-700 mt-8"> Learned By </h2>
+            <h2 className="flex text-6xl font-bold items-center justify-center p-4 mb-4 text-slate-700 mt-4"> Learned By </h2>
             <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto">
                     {move.learned_by_pokemon ? (
                       move.learned_by_pokemon.map((pokemon) => (
