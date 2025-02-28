@@ -38,7 +38,7 @@ export default function Home() {
       {isLoading ? <p>Loading...</p> : null}
       {error ? <p>Error: {error.message}</p> : null}
 
-      <div className="flex flex-wrap gap-8 w-full items-center justify-center">
+      <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto">
         {data ? (
           data.results.map((pokemon) => (
             <div key={pokemon.name} className="">
@@ -50,8 +50,8 @@ export default function Home() {
       </div>
 
       <div className="flex flex-row items-center justify-center p-6">
-        <button className="mr-4 text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
-        <button className="text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
+        <button className="mr-4 text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-[6px] border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
+        <button className="text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-[6px] border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
       </div>
     </div>
   )

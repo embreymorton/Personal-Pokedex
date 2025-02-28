@@ -31,7 +31,7 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
             </div>
 
             <h2 className="flex text-5xl font-bold items-center justify-center p-4 text-slate-700"> Learned By </h2>
-            <div className="flex flex-wrap gap-8 w-full items-center justify-center">
+            <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto">
                     {move.learned_by_pokemon ? (
                       move.learned_by_pokemon.map((pokemon) => (
                         <div key={pokemon.name} className="">
