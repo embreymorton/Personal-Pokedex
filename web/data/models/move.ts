@@ -20,4 +20,9 @@ export type Move = {
     flavor_text: string;
     language: { name: string };
   }[];
+
+  learned_by_pokemon: {
+    name: string;
+    url: string;
+  }[];
 };

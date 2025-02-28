@@ -13,7 +13,7 @@ export default function Home() {
   const maxPokemon = 1205;
   const maxPage = Math.ceil(maxPokemon / 50);
   const fetcher = async (): Promise<Pokedex> => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=48&offset=${page*48}`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${page*50}`);
     const data = await response.json() as unknown as Pokedex;
     return data;
   }
@@ -41,7 +41,10 @@ export default function Home() {
       <div className="flex flex-wrap gap-8 w-full items-center justify-center">
         {data ? (
           data.results.map((pokemon) => (
-            <PokeCard key={pokemon.name} name={pokemon.name}/>
+            <div key={pokemon.name} className="">
+              <PokeCard name={pokemon.name}/>
+            </div>
+
           ))
         ) : null}
       </div>

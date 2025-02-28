@@ -9,14 +9,14 @@ export default function MoveDetailsPage({move} : MoveDetailsPageProps) {
     const router = useRouter();
 
     return (
-        <>
-        <button type="button" onClick={() => router.back()}> Back </button>
-        <h1 className="text-4xl">{move.name} details!</h1>
-        <p> Description: {move.flavor_text_entries[0].flavor_text}</p>
-        <p> Type: {move.type.name}</p>
-        <p> Power: {move.power}</p>
-        <p> Accuracy: {move.accuracy}</p>
-        </>
+        <div className="p-6 bg-slate-300 h-screen">
+            <button className="bg-white text-black text-2xl w-24 h-10 border-4 border-slate-700 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
+            <h1 className="text-4xl">{move.name} details!</h1>
+            <p> Description: {move.flavor_text_entries[0].flavor_text}</p>
+            <p> Type: {move.type.name}</p>
+            <p> Power: {move.power}</p>
+            <p> Accuracy: {move.accuracy}</p>
+        </div>
     )
 }
 
