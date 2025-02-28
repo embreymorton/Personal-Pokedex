@@ -1,25 +1,18 @@
+import BackButton from "@/components/BackButton";
 import PokeCard, { formatName } from "@/components/PokeCard";
 import TypeCard from "@/components/TypeCard";
 import { Move } from "@/data/models/move";
 import { GetServerSidePropsContext } from "next";
-import { useRouter } from "next/router";
 
 type MoveDetailsPageProps = { move: Move };
 
 export default function MoveDetailsPage({ move }: MoveDetailsPageProps) {
-  const router = useRouter();
 
   return (
     <div className="p-6 bg-slate-300 dark:bg-gray-900 min-h-screen transition-colors">
 
       {/* Back Button */}
-      <button
-        className="bg-white dark:bg-gray-700 text-slate-700 dark:text-white text-3xl w-48 h-16 border-[6px] border-slate-700 dark:border-white rounded-xl mb-4 ml-32 transition-colors duration-300"
-        type="button"
-        onClick={() => router.back()}
-      >
-        Back
-      </button>
+      <BackButton />
 
       {/* Move Details */}
       <div className="flex flex-col items-center justify-center gap-4">

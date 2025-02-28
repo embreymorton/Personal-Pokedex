@@ -4,10 +4,10 @@ import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { formatName } from "@/components/PokeCard";
 import TypeCard, { typeColors } from "@/components/TypeCard";
 import Image from "next/image";
+import BackButton from "@/components/BackButton";
 
 interface PokemonSize {
   height: number | string;
@@ -29,7 +29,6 @@ function convertPokemonSize(size: PokemonSize): PokemonSize {
 type PokemonDetailsPageProps = { pokemon: Pokemon; species: PokemonSpecies };
 
 export default function PokemonDetailsPage({ pokemon, species }: PokemonDetailsPageProps) {
-  const router = useRouter();
   const size: PokemonSize = convertPokemonSize({ height: pokemon.height, weight: pokemon.weight });
   const [direction, setDirection] = useState<boolean>(true);
 
@@ -37,13 +36,7 @@ export default function PokemonDetailsPage({ pokemon, species }: PokemonDetailsP
     <div className="p-6 bg-slate-300 dark:bg-gray-900 min-h-screen transition-colors">
 
       {/* Back Button */}
-      <button
-        className="bg-white dark:bg-gray-700 text-slate-700 dark:text-white text-3xl w-48 h-16 border-[6px] border-slate-700 dark:border-white rounded-xl mb-4 ml-32 transition-colors duration-300"
-        type="button"
-        onClick={() => router.back()}
-      >
-        Back
-      </button>
+      <BackButton />
 
       {/* Pokémon Info */}
       <div className="flex flex-row items-center justify-center gap-8">
