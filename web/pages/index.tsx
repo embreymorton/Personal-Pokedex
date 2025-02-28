@@ -50,7 +50,6 @@ export default function Home() {
         <button className="mr-4 text-4xl bg-[#F0F0F0] text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
         <button className="text-4xl bg-[#F0F0F0] text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
       </div>
-      
     </div>
   )
 }

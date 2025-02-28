@@ -1,11 +1,13 @@
-import PokeCard from "@/components/PokeCard";
+import PokeCard, { formatPokedexIndex } from "@/components/PokeCard";
 import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { formatName } from "@/components/PokeCard";
-import TypeCard from "@/components/TypeCard";
+import TypeCard, { typeColors } from "@/components/TypeCard";
+import { useState } from "react";
+import Image from "next/image";
 
 interface PokemonSize {
     height: number | string
@@ -27,36 +29,64 @@ type PokemonDetailsPageProps = {pokemon: Pokemon, species: PokemonSpecies};
 export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPageProps) {
 
     const router = useRouter();
-
     const size: PokemonSize = convertPokemonSize({height: pokemon.height, weight: pokemon.weight});
 
+    const [direction, setDirection] = useState<boolean>(true);
+
     return (
-        <div className="p-4">
+        <div className="p-4 bg-slate-300">
             <button className="bg-[#F0F0F0] text-black text-2xl w-20 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
+            
+            <div className="flex flex-row items-center justify-center gap-8 ">
+                <div className="bg-[#F0F0F0] flex flex-col items-center justify-center w-[30rem] rounded-3xl border-8 border-slate-700" style={{borderColor: typeColors[pokemon.types[0].type.name].background}}>
+        
+                    <div className="text-slate-700 text-4xl mr-auto p-8">
+                        <p>{formatPokedexIndex(pokemon.id)}</p>
+                    </div>
+                    <h1 className="p-6 text-7xl text-slate-700 font-bold"> {formatName(pokemon.name)} </h1>
 
-            <div className="flex flex-row items-center justify-center gap-8">
-                <PokeCard name={pokemon.name} ></PokeCard>
-                <div className="flex flex-col w-80 gap-4 ">
-                    <h1 className="text-4xl"> {formatName(pokemon.name)} </h1>
-                    <p>{species.flavor_text_entries[0].flavor_text}</p>
-                    {pokemon.types.map((type) => (
-                        <div key={type.slot}>
-                            <p> Type {type.slot} </p>
-                            <TypeCard name={type.type.name}></TypeCard>
-                        </div>
-                    ))}
-                    <p>Height: {size.height}</p>
-                    <p>Weight: {size.weight}</p>
+                    <button onClick={() => setDirection(!direction)}>
+                        {direction ? 
+                            <Image src={pokemon.sprites?.front_default || ''} alt={pokemon.name || 'Pokemon'} width={250} height={250} /> : 
+                            <Image src={pokemon.sprites?.back_default  || ''} alt={pokemon.name || 'Pokemon'} width={250} height={250} />}   
+                    </button> 
                 </div>
+
+                <div className="flex flex-col gap-4 max-w-[25rem]">
+                    <div className="flex bg-[#F0F0F0] text-slate-700 p-4 rounded-xl border-8 border-slate-700">
+                        <p className="text-3xl">{species.flavor_text_entries[0].flavor_text}</p>
+                    </div>
+                    
+                    <div className="flex flex-row gap-4">
+                        <div className="flex flex-col w-[550px] gap-2 bg-[#F0F0F0] text-slate-700 p-4  rounded-xl border-8 border-slate-700 items-center">
+                            <div className="flex flex-row gap-10 mt-4 mb-4">
+                                {pokemon.types.map((type) => (
+                                    <div key={type.slot}>
+                                        <p className="text-3xl ml-1 mb-3 font-bold"> Type {type.slot} </p>
+                                        <TypeCard name={type.type.name}></TypeCard>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-3xl font-bold mb-4">Height: {size.height}</p>
+                            <p className="text-3xl font-bold">Weight: {size.weight}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                {species.evolves_from_species ? 
+                                <div className="bg-[#F0F0F0] p-4 w-[26rem] h-[30.5rem] border-8 rounded-2xl border-slate-700">
+                                    <div className="flex flex-col items-center">
+                                        <p className="text-2xl mt-2 mb-4 text-slate-700 font-bold">Evolves From</p>
+                                        <PokeCard name={species.evolves_from_species.name} ></PokeCard> 
+                                    </div> 
+                                </div>: null}
+
             </div>
 
-            {species.evolves_from_species ? 
-            <div>
-                <p className="text-2xl">Evolves From</p>
-                <PokeCard name={species.evolves_from_species.name} ></PokeCard> 
-            </div>
-            : null}
+           
 
+        
             <h2 className="text-2xl font-bold"> Moves </h2>
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>

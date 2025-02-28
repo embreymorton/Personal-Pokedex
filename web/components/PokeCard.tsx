@@ -13,8 +13,13 @@ export function formatName(name: string): string {
         .join(' ');
 }
 
+export function formatPokedexIndex(num: number, length: number = 4): string {
+    return num.toString().padStart(length, '0');
+}
+
 type PokeCardProps = {
     name: string;
+    scale?: number;
   };
 
 export default function PokeCard({ name }: PokeCardProps) {
@@ -32,15 +37,13 @@ export default function PokeCard({ name }: PokeCardProps) {
         queryFn: fetcher
       });
 
-    function formatPokedexIndex(num: number, length: number = 4): string {
-        return num.toString().padStart(length, '0');
-    }
+
 
 
     return (
-        <div>
+        <div >
             <Link href={`/pokemon/${name}`}>
-                <div className="flex flex-col p-4 rounded-xl bg-[#F0F0F0] w-80 h-88 items-center border-8 hover:bg-gray-50" style={{ borderColor: data ? typeColors[data.types[0].type.name].background : 'slategray' }}>
+                <div className="flex flex-col p-4 rounded-xl bg-[#F0F0F0] w-80 h-[22rem] items-center border-8 hover:bg-gray-50" style={{ borderColor: data ? typeColors[data.types[0].type.name].background : 'slategray' }}>
                     <div className="text-slate-700 text-4xl mr-auto">
                         {data ? <p>{formatPokedexIndex(data.id)}</p> : null}
                     </div>
