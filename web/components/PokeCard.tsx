@@ -40,7 +40,7 @@ export default function PokeCard({ name }: PokeCardProps) {
     return (
         <div className="transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl">
     <Link href={`/pokemon/${name}`}>
-        <div className="flex flex-col p-4 rounded-xl bg-white w-80 h-[22rem] items-center border-8" 
+        <div className="flex flex-col p-4 rounded-xl bg-white w-80 h-[22rem] items-center border-[6px]" 
              style={{ borderColor: data ? typeColors[data.types[0].type.name].background : 'slategray' }}>
             <div className="text-slate-700 text-4xl mr-auto">
                 {data ? <p>{formatPokedexIndex(data.id)}</p> : null}

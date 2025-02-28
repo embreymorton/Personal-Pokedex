@@ -31,8 +31,8 @@ export default function Home() {
         <Image src={logo} alt="PokéDex Logo" width={128} height={128} className="w-32 h-32 ml-4"/>
       </div>
       <div className="flex flex-row items-center justify-center p-6 gap-8">
-        <button className=" text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
-        <button className="text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-8 border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
+        <button className=" text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-[6px] border-black hover:bg-gray-50" onClick={() => setPage(page - 1)} disabled={page <= 0}>Previous</button>
+        <button className="text-4xl bg-white text-black w-72 h-20 font-bold rounded-2xl border-[6px] border-black hover:bg-gray-50" onClick={() => setPage(page + 1)} disabled={page >= maxPage - 1}>Next</button>
       </div>
       
       {isLoading ? <p>Loading...</p> : null}
