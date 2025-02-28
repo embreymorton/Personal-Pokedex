@@ -1,29 +1,14 @@
 import PokeCard from "@/components/PokeCard";
 import { Pokedex } from "@/data/models/pokedex";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from 'next/image';
 import logo from "../assets/logo.png";
 
 export default function Home() {
   const [page, setPage] = useState<number>(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const maxPokemon = 1205;
   const maxPage = Math.ceil(maxPokemon / 48);
-
-  // Function to toggle dark mode
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
-
-  // Apply dark mode class to <html>
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   const fetcher = async (): Promise<Pokedex> => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=48&offset=${page * 48}`);
@@ -38,13 +23,6 @@ export default function Home() {
 
   return (
     <div className="p-6 bg-slate-300 dark:bg-gray-900 min-h-screen transition-colors">
-      {/* Dark Mode Toggle Button */}
-      <button
-        className="fixed top-4 right-4 px-4 py-2 bg-gray-800 text-white dark:bg-gray-200 dark:text-black rounded-lg shadow-lg"
-        onClick={toggleDarkMode}
-      >
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
-      </button>
 
       {/* Header */}
       <div className="flex flex-row items-center justify-center">

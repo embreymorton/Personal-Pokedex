@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PokeCard, { formatPokedexIndex } from "@/components/PokeCard";
 import { Pokemon } from "@/data/models/pokemon";
 import { PokemonSpecies } from "@/data/models/pokemon-species";
@@ -31,33 +31,10 @@ type PokemonDetailsPageProps = { pokemon: Pokemon; species: PokemonSpecies };
 export default function PokemonDetailsPage({ pokemon, species }: PokemonDetailsPageProps) {
   const router = useRouter();
   const size: PokemonSize = convertPokemonSize({ height: pokemon.height, weight: pokemon.weight });
-
   const [direction, setDirection] = useState<boolean>(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Toggle Dark Mode
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
-
-  // Apply dark mode class to <html>
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   return (
     <div className="p-6 bg-slate-300 dark:bg-gray-900 min-h-screen transition-colors">
-      {/* Dark Mode Toggle Button */}
-      <button
-        className="fixed top-4 right-4 px-4 py-2 bg-gray-800 text-white dark:bg-gray-200 dark:text-black rounded-lg shadow-lg"
-        onClick={toggleDarkMode}
-      >
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
-      </button>
 
       {/* Back Button */}
       <button
@@ -122,7 +99,7 @@ export default function PokemonDetailsPage({ pokemon, species }: PokemonDetailsP
       </div>
 
       {/* Moves Section */}
-      <h2 className="flex text-6xl font-bold items-center justify-center p-4 mb-4 text-slate-700 dark:text-white"> Moves </h2>
+      <h2 className="flex text-6xl font-bold items-center justify-center p-4 mb-4 text-slate-700 dark:text-white mt-4"> Moves </h2>
       <div className="grid grid-cols-6 gap-4 max-w-[85rem] mx-auto">
         {pokemon.moves.map((move, index) => (
           <Link href={`/move/${move.move.name}`} key={index}>

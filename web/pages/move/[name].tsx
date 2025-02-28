@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import PokeCard, { formatName } from "@/components/PokeCard";
 import TypeCard from "@/components/TypeCard";
 import { Move } from "@/data/models/move";
@@ -9,31 +8,9 @@ type MoveDetailsPageProps = { move: Move };
 
 export default function MoveDetailsPage({ move }: MoveDetailsPageProps) {
   const router = useRouter();
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Toggle Dark Mode
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
-
-  // Apply dark mode class to <html>
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   return (
     <div className="p-6 bg-slate-300 dark:bg-gray-900 min-h-screen transition-colors">
-      {/* Dark Mode Toggle Button */}
-      <button
-        className="fixed top-4 right-4 px-4 py-2 bg-gray-800 text-white dark:bg-gray-200 dark:text-black rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
-        onClick={toggleDarkMode}
-      >
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
-      </button>
 
       {/* Back Button */}
       <button
