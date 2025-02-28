@@ -35,10 +35,10 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
 
     return (
         <div className="p-4 bg-slate-300">
-            <button className="bg-[#F0F0F0] text-black text-2xl w-24 h-10 border-4 border-slate-700 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
+            <button className="bg-white text-black text-2xl w-24 h-10 border-4 border-slate-700 rounded-xl mb-4" type="button" onClick={() => router.back()}> Back </button>
             
             <div className="flex flex-row items-center justify-center gap-8 ">
-            <div className="bg-[#F0F0F0] flex flex-col items-center justify-center w-[30rem] rounded-3xl border-8 border-slate-700" style={{borderColor: typeColors[pokemon.types[0].type.name].background}}>
+            <div className="bg-white flex flex-col items-center justify-center w-[30rem] rounded-3xl border-8 border-slate-700" style={{borderColor: typeColors[pokemon.types[0].type.name].background}}>
         
                 <div className="text-slate-700 text-4xl mr-auto p-8">
                 <p>{formatPokedexIndex(pokemon.id)}</p>
@@ -53,12 +53,12 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
             </div>
 
             <div className="flex flex-col gap-4 max-w-[25rem]">
-                <div className="flex bg-[#F0F0F0] text-slate-700 p-4 rounded-xl border-8 border-slate-700">
+                <div className="flex bg-white text-slate-700 p-4 rounded-xl border-8 border-slate-700">
                 <p className="text-3xl text-center">{species.flavor_text_entries[0].flavor_text}</p>
                 </div>
                 
                 <div className="flex flex-row gap-4">
-                <div className="flex flex-col w-[550px] gap-2 bg-[#F0F0F0] text-slate-700 p-4  rounded-xl border-8 border-slate-700 items-center">
+                <div className="flex flex-col w-[550px] gap-2 bg-white text-slate-700 p-4  rounded-xl border-8 border-slate-700 items-center">
                     <div className="flex flex-row gap-10 mt-4 mb-4">
                     {pokemon.types.map((type) => (
                         <div key={type.slot}>
@@ -75,7 +75,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
             </div>
             
             {species.evolves_from_species ? 
-                    <div className="bg-[#F0F0F0] p-4 w-[26rem] h-[30.5rem] border-8 rounded-2xl border-slate-700">
+                    <div className="bg-white p-4 w-[26rem] h-[30.5rem] border-8 rounded-2xl border-slate-700">
                         <div className="flex flex-col items-center">
                         <p className="text-2xl mt-2 mb-4 text-slate-700 font-bold">Evolves From</p>
                         <PokeCard name={species.evolves_from_species.name} ></PokeCard> 
@@ -88,7 +88,7 @@ export default function PokemonDetailsPage({pokemon, species} : PokemonDetailsPa
             <div className="grid grid-cols-6 gap-4 max-w-[85rem] mx-auto">
             {pokemon.moves.map((move, index) => (
                 <Link href={`/move/${move.move.name}`} key={index}>
-                <div className="flex flex-row bg-[#F0F0F0] items-center justify-center rounded-xl p-2 border-slate-700 border-4">
+                <div className="flex flex-row bg-white items-center justify-center rounded-xl p-2 border-slate-700 border-4">
                     <p className="text-slate-700 text-xl font-bold">{move.move.name}</p>
                 </div>
                 </Link>
