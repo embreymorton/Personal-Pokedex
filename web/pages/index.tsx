@@ -13,7 +13,7 @@ export default function Home() {
   const maxPokemon = 1205;
   const maxPage = Math.ceil(maxPokemon / 48);
   const fetcher = async (): Promise<Pokedex> => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${page*50}`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=48&offset=${page*48}`);
     const data = await response.json() as unknown as Pokedex;
     return data;
   }
