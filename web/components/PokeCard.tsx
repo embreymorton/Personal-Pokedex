@@ -39,30 +39,40 @@ export default function PokeCard({ name }: PokeCardProps) {
         <div
           className="flex flex-col p-4 rounded-xl bg-white dark:bg-gray-800 w-80 h-[22rem] items-center border-[6px] dark:border-gray-600"
           style={{
-            borderColor: data ? typeColors[data.types[0].type.name].background : "slategray",
+            borderColor: data?.types?.[0]?.type?.name
+              ? typeColors[data.types[0].type.name].background
+              : "slategray",
           }}
         >
           {/* Pokedex Index */}
-          <div className="text-slate-700 dark:text-white text-4xl mr-auto">
-            {data ? <p>{formatPokedexIndex(data.id)}</p> : null}
-          </div>
+          {data && (
+            <div className="text-slate-700 dark:text-white text-4xl mr-auto">
+              <p>{formatPokedexIndex(data.id)}</p>
+            </div>
+          )}
 
           {/* Pokémon Image */}
-          <Image
-            src={data?.sprites?.front_default || ""}
-            alt={data?.name || "Pokemon"}
-            width={180}
-            height={180}
-          />
+          {data?.sprites?.front_default ? (
+            <Image
+              src={data.sprites.front_default}
+              alt={formatName(data.name)}
+              width={180}
+              height={180}
+            />
+          ) : (
+            <div className="w-[180px] h-[180px] bg-gray-200 dark:bg-gray-700 rounded-md"></div> // Placeholder if image is missing
+          )}
 
           {/* Pokémon Name */}
-          <div className="text-slate-700 dark:text-white text-2xl font-bold line-clamp-1">
-            <p>{data ? formatName(data.name) : null}</p>
-          </div>
+          {data && (
+            <div className="text-slate-700 dark:text-white text-2xl font-bold line-clamp-1">
+              <p>{formatName(data.name)}</p>
+            </div>
+          )}
 
           {/* Pokémon Types */}
           <div className="flex flex-row gap-2 p-2">
-            {data?.types.map((type) => (
+            {data?.types?.map((type) => (
               <TypeCard key={type.type.name} name={type.type.name} />
             ))}
           </div>

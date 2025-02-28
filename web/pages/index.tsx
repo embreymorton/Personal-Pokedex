@@ -52,8 +52,19 @@ export default function Home() {
       </div>
 
       {/* Loading/Error Messages */}
-      {isLoading && <p className="text-black dark:text-white">Loading...</p>}
-      {error && <p className="text-red-500 dark:text-red-300">Error: {error.message}</p>}
+        {isLoading && (
+          <div className="flex items-center justify-center text-2xl text-black dark:text-white">
+            <span className="animate-spin h-6 w-6 mr-2 border-4 border-t-transparent border-gray-900 dark:border-white rounded-full"></span>
+            Loading...
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-200 dark:bg-red-800 text-red-700 dark:text-red-300 p-4 rounded-md text-xl">
+            ⚠️ Error: {error.message}
+          </div>
+        )}
+
 
       {/* Pokédex Grid */}
       <div className="grid grid-cols-4 gap-4 max-w-[85rem] mx-auto">
